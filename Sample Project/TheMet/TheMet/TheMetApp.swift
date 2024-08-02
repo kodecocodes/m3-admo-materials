@@ -38,9 +38,8 @@ struct TheMetApp: App {
   var body: some Scene {
     WindowGroup {
       ContentView()
-        .modelContainer(for: [
-          CachedObject.self
-        ])
-    }
+    }.modelContainer(for: [
+      CachedObject.self
+    ])
   }
 }

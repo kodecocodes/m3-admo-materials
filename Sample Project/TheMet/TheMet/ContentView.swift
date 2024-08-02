@@ -48,10 +48,12 @@ struct ContentView: View {
   var body: some View {
     NavigationStack {
       VStack {
-        Text("You searched for '\(lastQuery)'")
-          .padding(5)
-          .background(Color.metForeground)
-          .cornerRadius(10)
+        if !showCachedObjects {
+          Text("You searched for '\(lastQuery)'")
+            .padding(5)
+            .background(Color.metForeground)
+            .cornerRadius(10)
+        }
         Picker("Choose your starter",
               selection: $showCachedObjects) {
           Text("Online").tag(false)
@@ -80,17 +82,19 @@ struct ContentView: View {
         }
         .navigationTitle("The Met")
         .toolbar {
-          Button("Search the Met") {
-            store.objects.forEach { object in
-              context.insert(CachedObject(object: object))
+          if !showCachedObjects {
+            Button("Search the Met") {
+              store.objects.forEach { object in
+                context.insert(CachedObject(object: object))
+              }
+              showQueryField = true
             }
-            showQueryField = true
+            .foregroundColor(Color.metBackground)
+            .padding(.horizontal)
+            .background(
+              RoundedRectangle(cornerRadius: 8)
+                .stroke(Color.metBackground, lineWidth: 2))
           }
-          .foregroundColor(Color.metBackground)
-          .padding(.horizontal)
-          .background(
-            RoundedRectangle(cornerRadius: 8)
-              .stroke(Color.metBackground, lineWidth: 2))
         }
         .alert(
           "Search the Met",

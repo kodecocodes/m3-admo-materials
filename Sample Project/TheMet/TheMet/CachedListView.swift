@@ -38,19 +38,29 @@ struct CachedListView: View {
   @Query var cachedObjects: [CachedObject]
  
   var body: some View {
-    List(cachedObjects, id: \.objectID) { object in
-      if !object.isPublicDomain,
-        let url = URL(string: object.objectURL) {
-        NavigationLink(value: url) {
-          WebIndicatorView(title: object.title)
+    
+    if(cachedObjects.isEmpty) {
+      ContentUnavailableView(
+         "No Offline Items",
+         systemImage: "wifi",
+         description: Text("Search for items in online mode to store searchs offline.")
+      )
+      .foregroundStyle(.blue)
+    } else {
+      List(cachedObjects, id: \.id) { object in
+        if !object.isPublicDomain,
+           let url = URL(string: object.objectURL) {
+          NavigationLink(value: url) {
+            WebIndicatorView(title: object.title)
+          }
+          .listRowBackground(Color.metBackground)
+          .foregroundColor(.white)
+        } else {
+          NavigationLink(value: object) {
+            Text(object.title)
+          }
+          .listRowBackground(Color.metForeground)
         }
-        .listRowBackground(Color.metBackground)
-        .foregroundColor(.white)
-      } else {
-        NavigationLink(value: object) {
-          Text(object.title)
-        }
-        .listRowBackground(Color.metForeground)
       }
     }
   }

@@ -33,7 +33,6 @@
 import Foundation
 import SwiftData
 
-@MainActor
 class TheMetStore: ObservableObject {
   @Published var objects: [Object] = []
   let service = TheMetService()
@@ -48,7 +47,9 @@ class TheMetStore: ObservableObject {
       for (index, objectID) in objectIDs.objectIDs.enumerated()  // 2
       where index < maxIndex {
         if let object = try await service.getObject(from: objectID) {
-          objects.append(object)
+          DispatchQueue.main.async {
+            self.objects.append(object)
+          }
         }
       }
     }

@@ -36,7 +36,7 @@ import SwiftData
 @Model
 class CachedObject: Codable, Identifiable, Hashable {
   
-  @Attribute(.unique) let objectID: Int
+  let objectID: Int
   let title: String
   let creditLine: String
   let objectURL: String
@@ -82,10 +82,10 @@ class CachedObject: Codable, Identifiable, Hashable {
   }
   
   static func == (lhs: CachedObject, rhs: CachedObject) -> Bool {
-    return lhs.objectID == rhs.objectID
+    return lhs.id == rhs.id
   }
   
   func hash(into hasher: inout Hasher) {
-    hasher.combine(objectID)
+    hasher.combine(id)
   }
 }
