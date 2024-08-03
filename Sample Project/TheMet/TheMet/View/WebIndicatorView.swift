@@ -1,4 +1,4 @@
-/// Copyright (c) 2023 Kodeco LLC
+/// Copyright (c) 2024 Kodeco LLC
 /// 
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -31,15 +31,16 @@
 /// THE SOFTWARE.
 
 import SwiftUI
-import SwiftData
 
-@main
-struct TheMetApp: App {
-  var body: some Scene {
-    WindowGroup {
-      MetView()
-    }.modelContainer(for: [
-      CachedObject.self
-    ])
+struct WebIndicatorView: View {
+  let title: String
+  
+  var body: some View {
+    HStack {
+      Text(title)
+      Spacer()
+      Image(systemName: "rectangle.portrait.and.arrow.right.fill")
+        .font(.footnote)
+    }
   }
 }

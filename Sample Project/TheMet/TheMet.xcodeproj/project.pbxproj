@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F24FD112C5E18D200A2A85B /* WebIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F24FD102C5E18D200A2A85B /* WebIndicatorView.swift */; };
+		0F24FD132C5E192C00A2A85B /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F24FD122C5E192C00A2A85B /* PlaceholderView.swift */; };
 		1839F4B025190F2A00BB00F1 /* TheMetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1839F4AF25190F2A00BB00F1 /* TheMetApp.swift */; };
-		18D775C522AD944300AE281E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D775C422AD944300AE281E /* ContentView.swift */; };
+		18D775C522AD944300AE281E /* MetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D775C422AD944300AE281E /* MetView.swift */; };
 		18D775C722AD944400AE281E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D775C622AD944400AE281E /* Assets.xcassets */; };
 		18D775CA22AD944400AE281E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D775C922AD944400AE281E /* Preview Assets.xcassets */; };
 		18D775D822AD963800AE281E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18D775DA22AD963800AE281E /* LaunchScreen.storyboard */; };
@@ -23,9 +25,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F24FD102C5E18D200A2A85B /* WebIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebIndicatorView.swift; sourceTree = "<group>"; };
+		0F24FD122C5E192C00A2A85B /* PlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderView.swift; sourceTree = "<group>"; };
 		1839F4AF25190F2A00BB00F1 /* TheMetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheMetApp.swift; sourceTree = "<group>"; };
 		18D775BD22AD944300AE281E /* TheMet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheMet.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		18D775C422AD944300AE281E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		18D775C422AD944300AE281E /* MetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetView.swift; sourceTree = "<group>"; };
 		18D775C622AD944400AE281E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18D775C922AD944400AE281E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		18D775CE22AD944400AE281E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -51,6 +55,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F24FD0F2C5E186100A2A85B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				18D775C422AD944300AE281E /* MetView.swift */,
+				0F24FD102C5E18D200A2A85B /* WebIndicatorView.swift */,
+				CDDCFFC62939C83B0022CE9A /* ObjectView.swift */,
+				692CC33E2C58273100D335AD /* CachedListView.swift */,
+				0F24FD122C5E192C00A2A85B /* PlaceholderView.swift */,
+				CDDCFFC82939C8500022CE9A /* SafariView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0F24FD142C5E1D1B00A2A85B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CDDCFFC22939C7A90022CE9A /* Object.swift */,
+				692CC33C2C581CA300D335AD /* CachedObject.swift */,
+				CD1488F4296CD01F00332CAE /* TheMetService.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0F24FD152C5E1D2D00A2A85B /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				CD1488F02961427B00332CAE /* URLComponentsExtension.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		0F24FD162C5E1D5A00A2A85B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CDDCFFC02939C7930022CE9A /* TheMetStore.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		18D775B422AD944300AE281E = {
 			isa = PBXGroup;
 			children = (
@@ -73,15 +116,10 @@
 			isa = PBXGroup;
 			children = (
 				1839F4AF25190F2A00BB00F1 /* TheMetApp.swift */,
-				18D775C422AD944300AE281E /* ContentView.swift */,
-				CDDCFFC62939C83B0022CE9A /* ObjectView.swift */,
-				CDDCFFC22939C7A90022CE9A /* Object.swift */,
-				692CC33C2C581CA300D335AD /* CachedObject.swift */,
-				692CC33E2C58273100D335AD /* CachedListView.swift */,
-				CDDCFFC02939C7930022CE9A /* TheMetStore.swift */,
-				CD1488F4296CD01F00332CAE /* TheMetService.swift */,
-				CD1488F02961427B00332CAE /* URLComponentsExtension.swift */,
-				CDDCFFC82939C8500022CE9A /* SafariView.swift */,
+				0F24FD0F2C5E186100A2A85B /* View */,
+				0F24FD142C5E1D1B00A2A85B /* Model */,
+				0F24FD162C5E1D5A00A2A85B /* ViewModel */,
+				0F24FD152C5E1D2D00A2A85B /* Utils */,
 				18D775C622AD944400AE281E /* Assets.xcassets */,
 				18D775DA22AD963800AE281E /* LaunchScreen.storyboard */,
 				18D775CE22AD944400AE281E /* Info.plist */,
@@ -195,10 +233,12 @@
 			files = (
 				CDDCFFC12939C7930022CE9A /* TheMetStore.swift in Sources */,
 				CDDCFFC72939C83B0022CE9A /* ObjectView.swift in Sources */,
+				0F24FD132C5E192C00A2A85B /* PlaceholderView.swift in Sources */,
 				692CC33D2C581CA300D335AD /* CachedObject.swift in Sources */,
 				CD1488F12961427B00332CAE /* URLComponentsExtension.swift in Sources */,
-				18D775C522AD944300AE281E /* ContentView.swift in Sources */,
+				18D775C522AD944300AE281E /* MetView.swift in Sources */,
 				CDDCFFC32939C7A90022CE9A /* Object.swift in Sources */,
+				0F24FD112C5E18D200A2A85B /* WebIndicatorView.swift in Sources */,
 				1839F4B025190F2A00BB00F1 /* TheMetApp.swift in Sources */,
 				CD1488F5296CD01F00332CAE /* TheMetService.swift in Sources */,
 				692CC33F2C58273100D335AD /* CachedListView.swift in Sources */,
@@ -354,7 +394,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.TheMet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kodeco.TheMet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_STRICT_CONCURRENCY = minimal;
 				SWIFT_VERSION = 5.0;
@@ -376,7 +416,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.TheMet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kodeco.TheMet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_STRICT_CONCURRENCY = minimal;
 				SWIFT_VERSION = 5.0;

@@ -34,16 +34,14 @@ import SwiftUI
 import SwiftData
 
 struct CachedListView: View {
-  
   @Query var cachedObjects: [CachedObject]
- 
+  
   var body: some View {
-    
     if(cachedObjects.isEmpty) {
       ContentUnavailableView(
-         "No Offline Items",
-         systemImage: "wifi",
-         description: Text("Search for items in online mode to store searchs offline.")
+        "No Offline Items",
+        systemImage: "wifi",
+        description: Text("Search for items in online mode to store searchs offline.")
       )
       .foregroundStyle(.blue)
     } else {

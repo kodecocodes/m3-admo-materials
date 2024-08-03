@@ -1,15 +1,15 @@
 /// Copyright (c) 2023 Kodeco LLC
-/// 
+///
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
 /// in the Software without restriction, including without limitation the rights
 /// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 /// copies of the Software, and to permit persons to whom the Software is
 /// furnished to do so, subject to the following conditions:
-/// 
+///
 /// The above copyright notice and this permission notice shall be included in
 /// all copies or substantial portions of the Software.
-/// 
+///
 /// Notwithstanding the foregoing, you may not use, copy, modify, merge, publish,
 /// distribute, sublicense, create a derivative work, and/or sell copies of the
 /// Software in any work that is designed, intended, or marketed for pedagogical or
@@ -17,7 +17,7 @@
 /// or information technology.  Permission for such use, copying, modification,
 /// merger, publication, distribution, sublicensing, creation of derivative works,
 /// or sale is expressly withheld.
-/// 
+///
 /// This project and source code may use libraries or frameworks that are
 /// released under various Open-Source licenses. Use of those libraries and
 /// frameworks are governed by their own individual licenses.
@@ -33,10 +33,10 @@
 import Foundation
 
 struct TheMetService {
-  let baseURLString = "https://collectionapi.metmuseum.org/public/collection/v1/"
-  let session = URLSession.shared
-  let decoder = JSONDecoder()
-  let cache = NSCache<NSString, Object>()
+  private let baseURLString = "https://collectionapi.metmuseum.org/public/collection/v1/"
+  private let session = URLSession.shared
+  private let decoder = JSONDecoder()
+  private let cache = NSCache<NSString, Object>()
 
   func getObjectIDs(from queryTerm: String) async throws -> ObjectIDs? {
     let objectIDs: ObjectIDs?  // 1
@@ -70,12 +70,9 @@ struct TheMetService {
   }
 
   func getObject(from objectID: Int) async throws -> Object? {
-    
-    
     if let object = cache.object(forKey: objectID.codingKey.stringValue as NSString) {
-       return object
+      return object
     } else {
-      
       let object: Object?
 
       let objectURLString = baseURLString + "objects/\(objectID)"
@@ -101,7 +98,7 @@ struct TheMetService {
         print(error)
         return nil
       }
-      
+
       return object
     }
   }

@@ -1,4 +1,4 @@
-/// Copyright (c) 2023 Kodeco LLC
+/// Copyright (c) 2024 Kodeco LLC
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -33,34 +33,34 @@
 import Foundation
 import SwiftData
 
-class Object: Codable, Identifiable, Hashable {
-  
-  let objectID: Int
-  let title: String
-  let creditLine: String
-  let objectURL: String
-  let isPublicDomain: Bool
-  let primaryImageSmall: String
-    
-  init(objectID: Int, title: String, creditLine: String, objectURL: String, isPublicDomain: Bool, primaryImageSmall: String) {
-    self.objectID = objectID
-    self.title = title
-    self.creditLine = creditLine
-    self.objectURL = objectURL
-    self.isPublicDomain = isPublicDomain
-    self.primaryImageSmall = primaryImageSmall
+@Model
+class CachedObject: Codable, Identifiable, Hashable {
+  var objectID: Int
+  var title: String
+  var creditLine: String
+  var objectURL: String
+  var isPublicDomain: Bool
+  var primaryImageSmall: String
+
+  init(object: Object) {
+    self.objectID = object.objectID
+    self.title = object.title
+    self.creditLine = object.creditLine
+    self.objectURL = object.objectURL
+    self.isPublicDomain = object.isPublicDomain
+    self.primaryImageSmall = object.primaryImageSmall
   }
-  
+
   enum CodingKeys: CodingKey {
-          case objectID
-          case title
-          case creditLine
-          case objectURL
-          case isPublicDomain
-          case primaryImageSmall
+    case objectID
+    case title
+    case creditLine
+    case objectURL
+    case isPublicDomain
+    case primaryImageSmall
   }
-  
-   required init(from decoder: any Decoder) throws {
+
+  required init(from decoder: any Decoder) throws {
     let values = try decoder.container(keyedBy: CodingKeys.self)
     self.objectID = try values.decode(Int.self, forKey: .objectID)
     self.title = try values.decode(String.self, forKey: .title)
@@ -69,7 +69,7 @@ class Object: Codable, Identifiable, Hashable {
     self.isPublicDomain = try values.decode(Bool.self, forKey: .isPublicDomain)
     self.primaryImageSmall = try values.decode(String.self, forKey: .primaryImageSmall)
   }
-  
+
   func encode(to encoder: any Encoder) throws {
     var container = encoder.container(keyedBy: CodingKeys.self)
     try container.encode(objectID, forKey: .objectID)
@@ -79,18 +79,12 @@ class Object: Codable, Identifiable, Hashable {
     try container.encode(isPublicDomain, forKey: .isPublicDomain)
     try container.encode(primaryImageSmall, forKey: .primaryImageSmall)
   }
-  
-  static func == (lhs: Object, rhs: Object) -> Bool {
-    return lhs.objectID == rhs.objectID
+
+  static func == (lhs: CachedObject, rhs: CachedObject) -> Bool {
+    lhs.id == rhs.id
   }
-  
+
   func hash(into hasher: inout Hasher) {
-    hasher.combine(objectID)
+    hasher.combine(id)
   }
-}
-
-
-class ObjectIDs: Codable {
-  let total: Int
-  let objectIDs: [Int]
 }
